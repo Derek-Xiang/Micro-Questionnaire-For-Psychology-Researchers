@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Load header contents - stylesheet and page specific script -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Login Page</title>
+  </head>
+
+  <body>
+    <h1 style="color:white;">Thinking back over the day, write down in the boxes below three things in your life that you are grateful or thankful for.</h1>
+    {% if error %}
+      <p style="color:red;">Login failed. Incorrect username or password.</p>
+    {% endif %}
+
+    {% if typo %}
+      <p style="color:green;">Please input valid English</b>.</p>
+    {% endif %}
+
+    {% if user %}
+      <p style="color:white;">Welcome <b>{{ user["username"] }}</b>.</p>
+      <div class="form">
+        <form method="POST">
+          <input type="hidden" name="username" value={{ user["username"] }} />
+          <!-- <span class="label" name="username">{{ user["username"] }}</span><br><br> -->
+          <!-- <span class="label">username:</span><input type="text" name="username" id="username" required /><span class="label"></span><br><br> -->
+          <p>The first thing your feel grateful about:</p>
+          <textarea maxlength=200 rows="4" cols="50" name="comment1" >Enter text here...</textarea>
+          <p>The second thing your feel grateful about:</p>
+          <textarea maxlength=200 rows="4" cols="50" name="comment2" >Enter text here...</textarea>
+          <p>The third thing your feel grateful about:</p>
+          <textarea maxlength=200 rows="4" cols="50" name="comment3" >Enter text here...</textarea>
+          <br>
+          <input type="submit" value="submit"/>
+        </form>
+      </div>
+    {% else %}
+      <p style="color:red;">Please Login first.</p>
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Load header contents - stylesheet and page specific script -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Login Page</title>
+  </head>
+
+  <body>
+    <div class="form">
+    <h1>User Login</h1>
+    {% if error %}
+      <p style="color:red;">Login failed. Incorrect username or password.</p>
+    {% endif %}
+
+    {% if user %}
+      <p style="color:green;">Welcome back <b>{{ user["username"] }}</b>, you are <b>{{ user["role"] }}</b>.</p>
+    {% else %}
+
+        <form method="POST">
+          <span class="label">username:&nbsp;&nbsp;</span><input type="text" name="username" id="username" required /><span class="label"></span><br><br>
+          <span class="label">password:&nbsp;&nbsp;</span><input type="password" id="password" name="password" maxlength="12" required /><span class="label"></span><br><br>
+          <input type="submit" value="Login">
+        </form>
+      </div>
+      <p style="color:white">Forgot your password? Please contact:yp@student.unimelb.edu.au</p>
+    {% endif %}
+  </body>
+</html>

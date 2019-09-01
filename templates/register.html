@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Load header contents - stylesheet and page specific script -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./javascript/register.js"></script>
+    <title>Registration Page</title>
+  </head>
+  <body>
+    <h1>Registration</h1>
+    {% if error %}
+      <p style="color:red;">Registration failed: {{ error["message"] }}</p>
+    {% endif %}
+
+    {% if user %}
+      <p style="color:green;">Congratulations, <b>{{ user["username"] }}</b>, you have been registered as a <b>{{ user["role"] }}</b>.</p>
+    {% endif %}
+
+    <div class="form">
+      <form method="POST">
+        <!-- onkeyup event on username fires each time a key is released causing
+        a check to be made with the server to see if the username is free -->
+
+        <span class="label">username:&nbsp;&nbsp;</span><input type="text" onkeyup="checkUsername(this)" name="username" id="username" required /><span class="label" id="usercheck"></span>
+        <p>Please use your real name</p>
+        <span class="label">password:&nbsp;&nbsp;</span><input type="password" id="password" name="password" maxlength="12" required /><span class="label"></span><br><br>
+        <input type="submit" value="Register">
+      </form>
+    </div>
+  </body>
+</html>

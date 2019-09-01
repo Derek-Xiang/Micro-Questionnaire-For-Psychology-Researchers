@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Research Questionnaire</title>
+  </head>
+  <body>
+    <div class="form">
+    {% if have_done and still_have %}
+      <h1>Thanks for your participation!</h1><br>
+      <h1>You have just complete your {{have_done}} day's gratitude journal</h1><br>
+      <h1>there are {{still_have}} days to go, almost there!</h1><br>
+      <h1>Have a good rest of day!</h1>
+      <h1>See you tomorrow :) </h1>
+    {% elif sameday %}
+      <h1>Thanks for your participation!</h1><br>
+      <h1>You have already done today's survey !</h1><br>
+      <h1>See you tomorrow :) </h1>
+
+    {% else %}
+      <h1>Welcome!!</h1>
+      <input type="button" value="Register" onclick="javascript:window.location='./register'"></input>&nbsp;&nbsp;
+      <input type="button" value="Login" onclick="javascript:window.location='./login'"></input><br><br>
+
+      <h2>Instruction:</h2>
+      <div class="Instruction">
+        <p>1 - Register a new account or log in to record your daily answers.<br></p>
+        <p>(<b>Please do not use your sensitive password)</b></p>
+        <p>2 - Write <b>three</b> things you feel <b>grateful</b> about today and submit.</p>
+        <p>3 - You can only submit your answer <b>once</b> a day. </p>
+        <br><br><br><br><br><br>
+      </div>
+
+    {% endif %}
+  </div>
+  </body>
+</html>
