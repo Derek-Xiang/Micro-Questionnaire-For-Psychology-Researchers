@@ -1,4 +1,4 @@
-<b>Micro Questionnaire For Psychology Researchers(Flask+Mysql+AWS ec2/s3+nginx)</b>
+<h1><b>Micro Questionnaire For Psychology Researchers(Flask+Mysql+AWS ec2/s3+nginx)</b><h1>
 
 This is a small web application which allows participants to register and login securely, and finish their questions in one week, whose data will be stored in mysql database. <br>
 DATABASE:<br>
