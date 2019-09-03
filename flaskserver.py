@@ -1,3 +1,8 @@
+## Author: Dejun Xiang
+## Project: small web app for a research group for psychology expirements.
+##          every participants will use it for 7 days tracking.
+## Four pages: /comments, /colours, /register, /login, and /resetdatabase for testing
+
 from flask import Flask, redirect, url_for
 from flask import request
 from flask import render_template
@@ -39,7 +44,6 @@ def login():
             return redirect(url_for('.comments',error=error, user=user))
     return render_template('login.html', error=error, user=user)
 
-#-------------------------------------------------------------------------------
 @app.route('/comments', methods=['GET', 'POST'])
 def comments():
     db = get_mysqldb()
@@ -63,8 +67,6 @@ def comments():
         print(222222)
         print(time)
         today = str(datetime.date.today())
-        print(today)
-        print('**************')
 
         try:
             # if it is not the first day
@@ -108,7 +110,6 @@ def comments():
                 still_have = 6
                 return render_template('home.html',have_done=have_done,still_have=still_have)
         except mysql.connector.errors.DatabaseError:
-            print('哎呦不错')
             user = {"username": username}
             return render_template('comments.html',user=user,typo=type)
 
@@ -129,8 +130,8 @@ def register():
 
     username = request.form['username']
     password = request.form['password']
-    #====================================below============
     cursor = db.cursor()
+    
     try:
         cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)",\
                         (bleach.clean(username), password))
@@ -164,12 +165,9 @@ def username():
 
 #===============================================================================
 #                     Utility methods
-#
-# Code below here can be considered to be safe and is not part of the assignment.
-#
 #===============================================================================
 
-# Utility function to convert database response into JSON compatiable array
+# connect to the mysql database
 def get_mysqldb():
     mydb=mysql.connector.connect(
         host = 'localhost',
@@ -180,7 +178,7 @@ def get_mysqldb():
     print('database connected..')
     return mydb
 
-# Reset database for testing purposes - also useful to see structure of DB
+# Reset database for testing purposes
 @app.route('/resetdatabase', methods=['GET'])
 def resetdb():
 #=========================below==================================================================
@@ -239,7 +237,6 @@ def resetdb():
     for statement in sql_insert:
         cursor.execute(statement)
         print(statement)
-    print(7989898)
 
     # Save (commit) the changes
     db.commit()
