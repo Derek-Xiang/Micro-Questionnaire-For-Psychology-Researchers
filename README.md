@@ -4,7 +4,7 @@ This is a small web application which allows participants to register and login 
 DATABASE:<br>
  &nbsp;&nbsp; --research<br>
 &nbsp;&nbsp;&nbsp;&nbsp;    --comments<br>
-    --colours<br>
-    --users<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;   --colours<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;   --users<br>
 
 The app is deployed on a ec2 machine on aws by nginx engine to deploy its production environment and because of high availability of data, the database is backup-ed with s3 every 24 hours. (not required high throughput, so LB or ASG are not used)
